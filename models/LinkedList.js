@@ -63,8 +63,21 @@ class LinkedList {
     }
 
     removeLast() {
+        if (this.isEmpty())
+            return null;
+
         const dadoRemovido = this.#tail.dado;
-        // continuar
+        this.#tail = this.#tail.anterior;
+        
+        if(this.#tail === null){
+            this.head = null;
+        }
+        else
+            this.#tail.proximo = null;
+    
+        this.#qtd--;
+        return dadoRemovido;
+        
     }
 
 
