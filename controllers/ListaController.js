@@ -16,7 +16,7 @@ function leiaDadosTarefa() {
   }
   return new Tarefa(descricao, prioridade, obterDataAtual(), obterHoraAtual());
 }
-//--------------------------------------------------------------------------------------------
+/*--------------------------------------------------------------------------------------------
 function adicionarElementoInicio() {
   const novaTarefa = leiaDadosTarefa()
   minhaLista.addFirst(novaTarefa);
@@ -24,7 +24,7 @@ function adicionarElementoInicio() {
   alert("Inserido com sucesso !");
   limpaInputs();
 }
-//------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 function adicionarElementoFinal() {
   const novaTarefa = leiaDadosTarefa();
   minhaLista.addLast(novaTarefa);
@@ -40,7 +40,28 @@ function adicionarIndice() {
   atualizarLista();
   limpaInputs();
 }
+//--------------------------------------------------------------------------------------------*/
+
+
 //--------------------------------------------------------------------------------------------
+function adicionarPorPrioridade() {
+  const novaTarefa = leiaDadosTarefa();
+  if(novaTarefa.prioridade >= minhaLista.getLast.prioridade)
+    return minhaLista.addLast(novaTarefa);
+  if(novaTarefa.prioridade < minhaLista.getFisrt.prioridade)
+    return minhaLista.addFirst(novaTarefa)
+  //percorrer
+  let pos = 0;
+
+  for(const tarefa of minhaLista){
+    //prioridade nova tarefa >= prioridade atual
+    //pos ++
+    // sai for
+    // inserir addAtIndex
+  }
+}
+//--------------------------------------------------------------------------------------------
+
 // Função para remover o primeiro elemento da lista
 function removerElementoInicio() {
   if (!minhaLista.isEmpty()) {

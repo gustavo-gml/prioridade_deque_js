@@ -61,28 +61,13 @@
                     <input type="number" class="form-control form-control-lg" id="txtnovaPrioridade" placeholder="1 = Alta, 2 = Média, 3 = Baixa" min="1" max="3">
                   </div>
                   
-                  <div class="mb-4">
-                    <label for="txtIndice" class="form-label fw-semibold">
-                      <i class="fas fa-list-ol me-1"></i>Índice (opcional)
-                    </label>
-                    <input type="number" class="form-control form-control-lg" id="txtIndice" placeholder="Posição na lista..." min="0">
-                  </div>
+                  
 
                   <!-- Action Buttons -->
                   <div class="row g-2 mb-3">
-                    <div class="col-6">
-                      <button type="button" class="btn btn-success btn-lg w-100" onclick="adicionarElementoInicio()">
-                        <i class="fas fa-angle-double-up me-1"></i>Início
-                      </button>
-                    </div>
-                    <div class="col-6">
-                      <button type="button" class="btn btn-success btn-lg w-100" onclick="adicionarElementoFinal()">
-                        <i class="fas fa-angle-double-down me-1"></i>Final
-                      </button>
-                    </div>
                     <div class="col-12">
                       <button type="button" class="btn btn-info btn-lg w-100" onclick="adicionarIndice()">
-                        <i class="fas fa-crosshairs me-1"></i>Adicionar no Índice
+                        <i class="fas fa-crosshairs me-1"></i>Adicionar por prioridade
                       </button>
                     </div>
                   </div>
@@ -91,12 +76,12 @@
                   <div class="row g-2 mb-3">
                     <div class="col-6">
                       <button type="button" class="btn btn-outline-danger w-100" onclick="removerElementoInicio()">
-                        <i class="fas fa-minus-circle me-1"></i>Remover Início
+                        <i class="fas fa-minus-circle me-1"></i>Remover
                       </button>
                     </div>
                     <div class="col-6">
                       <button type="button" class="btn btn-outline-danger w-100" onclick="removerElementoFinal()">
-                        <i class="fas fa-minus-circle me-1"></i>Remover Final
+                        <i class="fas fa-minus-circle me-1"></i>Remover Selecionado
                       </button>
                     </div>
                   </div>

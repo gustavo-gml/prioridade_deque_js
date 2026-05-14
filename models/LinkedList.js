@@ -144,4 +144,18 @@ class LinkedList {
 
     }
 
+    getLast(){
+        if(!this.isEmpty())
+            return this.#tail.dado;
+
+        return null
+    }
+
+    getFisrt(){
+        if(!this.isEmpty())
+            return this.#head.dado;
+        
+        return null
+    }
+
 }
