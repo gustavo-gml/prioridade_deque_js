@@ -19,7 +19,7 @@ function leiaDadosTarefa() {
 //--------------------------------------------------------------------------------------------
 function adicionarElementoInicio() {
   const novaTarefa = leiaDadosTarefa()
-  minhaLista.addFirst(novaTarefa)
+  minhaLista.addFirst(novaTarefa);
   atualizarLista();
   alert("Inserido com sucesso !");
   limpaInputs();
@@ -31,11 +31,14 @@ function adicionarElementoFinal() {
   atualizarLista();
   alert("Inserido com sucesso !");
   limpaInputs();
-  // implemente
 }
 //--------------------------------------------------------------------------------------------
 function adicionarIndice() {
-  //implemente
+  const novaTarefa = leiaDadosTarefa();
+  const indice = document.getElementById("txtIndice")
+  minhaLista.addAtIndex(novaTarefa,  indice.value);
+  atualizarLista();
+  limpaInputs();
 }
 //--------------------------------------------------------------------------------------------
 // Função para remover o primeiro elemento da lista
@@ -83,7 +86,7 @@ function atualizarLista() {
     lblTarefas.innerHTML = "Lista de Tarefas";
     for (const tarefa of minhaLista) {
       const novaLinha = document.createElement("li");
-      novaLinha.innerHTML = tarefa.toString();
+      novaLinha.innerHTML = tarefa;
       listaTarefas.appendChild(novaLinha);
     }
   }

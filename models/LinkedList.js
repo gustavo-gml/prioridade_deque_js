@@ -22,8 +22,9 @@ class LinkedList {
         if (this.isEmpty()) {
             this.#tail = novoNo;
         } else {
-            this.#head.anterior = novoNo;
             novoNo.proximo = this.#head;
+            this.#head.anterior = novoNo;
+            
         }
         this.#qtd++;
         this.#head = novoNo; // evita dry 
@@ -38,8 +39,9 @@ class LinkedList {
         }
         else {
             //TODO
-            this.#tail.proximo = novoNo; //homem aranha de apontamentos
             novoNo.anterior = this.#tail;
+            this.#tail.proximo = novoNo; //homem aranha de apontamentos
+            
         }
         this.#tail = novoNo;
         this.#qtd++;
@@ -78,6 +80,31 @@ class LinkedList {
         this.#qtd--;
         return dadoRemovido;
         
+    }
+
+    addAtIndex(novoDado, index){
+        if(this.isEmpty() || index <= 0)
+            return this.addFirst(novoDado);
+        if(this.index >= this.#qtd)
+            return this.addLast(novoDado);
+
+        const novoNo = new No(novoDado);
+
+        let aux = this.#head;
+        let posAtual = 0;
+        while(posAtual < index - 1){
+            aux = aux.proximo;
+            posAtual++;
+        }
+        //let aux2 = aux.proximo;
+        novoNo.anterior = aux;
+     
+        novoNo.proximo = aux.proximo;
+        aux.proximo = novoNo;
+        novoNo.proximo.anterior = novoNo;
+        //aux2.anterior = novoNo;
+        this.#qtd++;
+        return true;
     }
 
 
