@@ -67,6 +67,32 @@ function comparaTarefasDataHora(tarefa1, tarefa2) {
   }
 }
 //--------------------------------------------------------------------------------------------
+
+function isMenor(data1, hora1, data2, hora2) {
+  const dataHora1 = new Date(`${converterDataFormatoISO8601(data1)}T${hora1}`);
+  const dataHora2 = new Date(`${converterDataFormatoISO8601(data2)}T${hora2}`);
+  return dataHora1.getTime() < dataHora2.getTime();
+}
+
+//--------------------------------------------------------------------------------------------
+
+function tarefaMaisAntiga() {
+    if(minhaLista.isEmpty()){
+      return alert("Lista de Tarefas Vazia");
+    }
+    let tarefaAntiga = minhaLista.getFirst();
+    for (const tarefa of minhaLista) {
+       // comprar a tarefaAntiga com cada tarefa usando a funcao acima
+      if(!isMenor(tarefaAntiga.data, tarefaAntiga.hora, tarefa.data, tarefa.hora)){
+        tarefaAntiga = tarefa;
+      }
+    }      
+    alert("Tarefa mais antiga: " + tarefaAntiga.toString());
+
+}
+
+
+//--------------------------------------------------------------------------------------------
 function saveLinkedListToLocalStorage() {
   console.log("saveLinkedListToLocalStorage");
   let listaParaSalvar = [];

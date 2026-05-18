@@ -108,6 +108,30 @@ class LinkedList {
         return true;
     }
 
+    removeAtIndex(index){
+        if(this.isEmpty() || index < 0 || index >= this.#qtd)
+            return null
+        if(index === 0){
+            return this.removeFirst();
+        } else if(index === this.#qtd - 1){
+            return this.removeLast();
+        }
+        let aux = this.#head;
+        
+        let posAtual = 0;
+        while(posAtual < index){
+            aux = aux.proximo;
+            posAtual++;
+        }
+
+        
+        
+        aux.anterior.proximo = aux.proximo;
+        aux.proximo.anterior = aux.anterior;
+        this.#qtd--;
+
+        return aux.dado;
+    }
 
 
     get length() {
