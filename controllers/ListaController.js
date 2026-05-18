@@ -10,11 +10,13 @@ function limpaInputs() {
 function leiaDadosTarefa() {
   const descricao = document.getElementById("txtnovaTarefa").value.trim();
   const prioridade = document.getElementById("txtnovaPrioridade").value.trim();
-  if (descricao === "" || prioridade === "") {
+  const numeroPrioridade = parseInt(prioridade, 10);
+
+  if (descricao === "" || prioridade === "" || isNaN(numeroPrioridade)) {
     alert("Preencha os campos de descrição e prioridade!");
     return null;
   }
-  return new Tarefa(descricao, prioridade, obterDataAtual(), obterHoraAtual());
+  return new Tarefa(descricao, numeroPrioridade, obterDataAtual(), obterHoraAtual());
 }
 /*--------------------------------------------------------------------------------------------
 function adicionarElementoInicio() {
@@ -46,19 +48,36 @@ function adicionarIndice() {
 //--------------------------------------------------------------------------------------------
 function adicionarPorPrioridade() {
   const novaTarefa = leiaDadosTarefa();
-  if(novaTarefa.prioridade >= minhaLista.getLast.prioridade)
-    return minhaLista.addLast(novaTarefa);
-  if(novaTarefa.prioridade < minhaLista.getFisrt.prioridade)
-    return minhaLista.addFirst(novaTarefa)
+  let result = false
+  if(!minhaLista.isEmpty()){
+    if(novaTarefa.prioridade >= minhaLista.getLast().prioridade)
+    result =  minhaLista.addLast(novaTarefa);
+    else if(novaTarefa.prioridade < minhaLista.getFirst().prioridade)
+    result = minhaLista.addFirst(novaTarefa)
+  }else{
+    result = minhaLista.addFirst(novaTarefa);
+  }
   //percorrer
+  if(result){
+    atualizarLista();
+    return result;
+  }
+    
   let pos = 0;
 
   for(const tarefa of minhaLista){
     //prioridade nova tarefa >= prioridade atual
-    //pos ++
-    // sai for
-    // inserir addAtIndex
+    if(novaTarefa.prioridade >= tarefa.prioridade){
+      pos++
+    }
+    else{
+      break;
+    }
+    
   }
+  minhaLista.addAtIndex(novaTarefa, pos);
+
+  atualizarLista();
 }
 //--------------------------------------------------------------------------------------------
 
@@ -107,7 +126,8 @@ function atualizarLista() {
     lblTarefas.innerHTML = "Lista de Tarefas";
     for (const tarefa of minhaLista) {
       const novaLinha = document.createElement("li");
-      novaLinha.innerHTML = tarefa;
+      novaLinha.innerHTML = tarefa.toString();
+      console.log(tarefa.toString())
       listaTarefas.appendChild(novaLinha);
     }
   }

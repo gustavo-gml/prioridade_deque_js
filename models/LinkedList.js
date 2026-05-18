@@ -72,7 +72,7 @@ class LinkedList {
         this.#tail = this.#tail.anterior;
         
         if(this.#tail === null){
-            this.head = null;
+            this.#head = null;
         }
         else
             this.#tail.proximo = null;
@@ -85,7 +85,7 @@ class LinkedList {
     addAtIndex(novoDado, index){
         if(this.isEmpty() || index <= 0)
             return this.addFirst(novoDado);
-        if(this.index >= this.#qtd)
+        if(index >= this.#qtd)
             return this.addLast(novoDado);
 
         const novoNo = new No(novoDado);
@@ -96,13 +96,14 @@ class LinkedList {
             aux = aux.proximo;
             posAtual++;
         }
-        //let aux2 = aux.proximo;
+        let aux2 = aux.proximo;
+
         novoNo.anterior = aux;
-     
         novoNo.proximo = aux.proximo;
+
         aux.proximo = novoNo;
-        novoNo.proximo.anterior = novoNo;
-        //aux2.anterior = novoNo;
+        //novoNo.proximo.anterior = novoNo;
+        aux2.anterior = novoNo;
         this.#qtd++;
         return true;
     }
@@ -141,7 +142,7 @@ class LinkedList {
             retorno += "| " + noAtual.dado;
             noAtual = noAtual.proximo;
         }
-
+        return retorno;
     }
 
     getLast(){
@@ -151,7 +152,7 @@ class LinkedList {
         return null
     }
 
-    getFisrt(){
+    getFirst(){
         if(!this.isEmpty())
             return this.#head.dado;
         
